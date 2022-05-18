@@ -45,6 +45,18 @@ class LoginSerializer(TokenObtainPairSerializer):
         return attrs
 
 
+class UserDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('__all__')
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username')
+
+
 class CreateNewPasswordSerializer(serializers.Serializer):
     email = serializers.CharField(max_length=50, required=True)
     code = serializers.CharField(max_length=100, required=True)
