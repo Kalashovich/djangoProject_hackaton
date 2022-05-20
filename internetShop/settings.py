@@ -35,10 +35,13 @@ INSTALLED_APPS = [
     'rest_auth',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
+    'drf_yasg',
+    'django_filters',
 
     # my_apps
     'product',
     'account',
+    'order',
 ]
 
 MIDDLEWARE = [
@@ -91,6 +94,8 @@ DATABASES = {
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_USER_MODEL = 'account.CustomUser'
+# AUTH_USER_MODEL = 'product.CustomUser'
+# AUTH_USER_MODEL = 'account.CustomUser'
 
 AUTH_PASSWORD_VALIDATORS = [
     {

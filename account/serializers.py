@@ -19,6 +19,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         second_password = attrs.pop('second_password')
         if attrs.get('password') != second_password:
             raise serializers.ValidationError('Пароли не совпадают!')
+
         if not attrs.get('password').isalnum():
             raise serializers.ValidationError('Поле пароля должно содержать буквы и цифры!')
         return attrs

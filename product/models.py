@@ -1,4 +1,9 @@
 from django.db import models
+from account.models import CustomUser
+from django.contrib.auth import get_user_model
+
+
+User = get_user_model()
 
 
 class Product(models.Model):
@@ -19,7 +24,7 @@ class Product(models.Model):
 
 
 class Review(models.Model):
-    owner = models.ForeignKey('auth.User', related_name='reviews', on_delete=models.CASCADE)
+    owner = models.ForeignKey(CustomUser, related_name='reviews', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, related_name='reviews', on_delete=models.CASCADE)
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -30,7 +35,7 @@ class Review(models.Model):
 
 class Likes(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='likes')
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='liked')
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='liked')
 
     class Meta:
         unique_together = ['product', 'user']

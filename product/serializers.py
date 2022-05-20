@@ -32,9 +32,10 @@ class ProductSerializer(serializers.ModelSerializer):
             representation['likes_count'] = instance.like.count()
             return representation
 
+
 class ReviewSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model = Review
-        fields = ('id', 'body', 'owner', 'post')
+        fields = ('id', 'body', 'owner', 'product')

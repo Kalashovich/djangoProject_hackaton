@@ -22,7 +22,7 @@ def reset_password(user):
         f'Ваш личный код: {code}',
         'Не передавайте его НИКОМУ',
         'from@example.com',
-        [to_email],
+        [to_email,],
         fail_silently=False,
     )
 
